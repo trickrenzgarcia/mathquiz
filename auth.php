@@ -1,28 +1,71 @@
 <?php
-session_start();
-ob_start();
-$_SESSION["email"] = trim(htmlspecialchars($_POST["email"]));
-$_SESSION["password"] = trim(htmlspecialchars($_POST["password"]));
-$login_page = "Location:login.php?msg=";
-$index_page = "Location:index.php";
+  if(!isset($_SESSION)){
+    session_start();
+  }
+  include_once("connections/connection.php");
+  $con = connection();
 
-$_SESSION["email_array"] = array();
-$_SESSION["password_array"] = array();
-if ($file = fopen("credentials.config", "r")) {
-  while(!feof($file)){
-    $line = explode(",", fgets($file), 2);
-    array_push($_SESSION["email_array"], trim($line[0]));
-    array_push($_SESSION["password_array"], trim($line[1]));
+  $email = "";
+  $errors = array();
+
+  // USER REGISTER
+  if(isset($_POST['signup'])){ 
+    $email = mysqli_real_escape_string($con, $_POST['email']);
+    $password_1 = mysqli_real_escape_string($con, $_POST['password_1']);
+    $password_2 = mysqli_real_escape_string($con, $_POST['password_2']);
+
+    if(empty($email)) { array_push($errors, "Email is required");}
+    if (empty($password_1)) { array_push($errors, "Password is required"); }
+    if ($password_1 != $password_2) {
+      echo array_push($errors, "The two passwords do not match");
+    }
+    $user_check_query = "SELECT * FROM users WHERE email='$email' LIMIT 1";
+    $result = mysqli_query($con, $user_check_query);
+    $user = mysqli_fetch_assoc($result);
+    
+    if($user) {
+      if($user['email'] === $email) {
+        echo array_push($errors, "Email already exists");
+      }
+    }
+    if(count($errors) == 0){
+      $password = md5($password_1);
+      $sql = "INSERT INTO users (email, password) VALUES('$email','$password')";
+      $user = $con->query($sql) or die ($con->error);
+      $_SESSION['UserLogin'] = $email;
+  	  $_SESSION['Access'] = "";
+      header('location: index.php');
+    }
+    
   }
-  fclose($file);
-}
-$index = array_search($_SESSION["email"], $_SESSION["email_array"]);
-  if(is_numeric($index) && strcmp($_SESSION["email"], $_SESSION["email_array"][$index])==0 && strcmp($_SESSION["password"], $_SESSION["password_array"][$index])==0) {
-    header($index_page);
-  }
-  else {
-    unset($_SESSION["email"]);
-    unset($_SESSION["password"]);
-    header($login_page . $msg);
+
+  // USER LOGIN
+  if(isset($_POST['login'])){
+    $email = mysqli_real_escape_string($con, $_POST['email']);
+    $password = mysqli_real_escape_string($con, $_POST['password']);
+
+    if(empty($email)){
+      array_push($errors, "Email is required");
+    }
+    if(empty($password)){
+      array_push($errors, "Password is required");
+    }
+    if(count($errors) == 0){
+      $password = md5($password);
+      $sql = "SELECT * FROM users WHERE email = '$email' AND password = '$password'";
+      $user = $con->query($sql) or die ($con->error);
+      $row = $user->fetch_assoc();
+      $total = $user->num_rows;
+
+      if($total > 0){
+        $_SESSION['UserLogin'] = $row['email'];
+        $_SESSION['Access'] = $row['access'];
+
+        echo header("Location: index.php");
+      } else {
+        echo "Wrong email/password combination";
+      }
+    }
+
   }
 ?>
