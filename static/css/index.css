@@ -1,0 +1,10 @@
+html, body{
+  margin: 0;
+  background: #90caf9;
+}
+.nav-container{
+  padding: 20px;
+}
+nav{
+  height: 108px;
+}
