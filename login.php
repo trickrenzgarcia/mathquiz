@@ -2,11 +2,12 @@
   include_once("auth.php");
 ?>
 <form action="" method="post">
-  <h1>Login Page</h1>
-  <label>Email:</label>
-  <input type="email" name="email" id="email"/>
-  <label>Password:</label>
-  <input type="password" name="password" id="password"/>
-  <button type="submit" name="login">Login</button>
+  <center><img src="static/images/logo.png" alt="logo" width="120px"></center>
+  <center><h3>Login</h3></center><br>
+  <label>Email:</label><br>
+  <input type="email" name="email" id="email"/><br>
+  <label>Password:</label><br>
+  <input type="password" name="password" id="password"/><br>
+  <button class="button_submit" type="submit" name="login">Login</button>
 </form>
 

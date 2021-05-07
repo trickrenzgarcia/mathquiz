@@ -24,15 +24,25 @@
           <?php if(isset($_SESSION['UserLogin'])){?>
             <li><a href="logout.php">Logout</a></li>
           <?php } else { ?>
-            <li><a href="login.php">LOGIN</a></li>
+            <li><a class="modal-trigger" href="#login">LOGIN</a></li>
             <li><a href="signup.php">SIGN UP</a></li>
           <?php }?>
         </ul>
       </div>
     </div>
   </nav>
+  <!-- Modal Structure -->
+  <div id="login" class="modal">
+    <div class="modal-content">
+      <?php include_once("login.php") ?>
+    </div>
+  </div>
 
-
-  
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+    crossorigin="anonymous">
+  </script>
+  <script src="static/js/materialize.min.js"></script>
+  <script src="static/js/index.js"></script>
 </body>
 </html>

@@ -8,3 +8,21 @@ html, body{
 nav{
   height: 108px;
 }
+.modal {
+  width: 420px;
+}
+.button_submit {
+  margin-top: 30px;
+  margin-bottom: 20px;
+  border: 2px solid lightgray;
+  background-color: white;
+  border-radius: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  padding: 10px;
+  width: 100%;
+}
+.button_submit:hover{
+  background: lightgray;
+}
