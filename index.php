@@ -22,6 +22,7 @@
         <a href="index.php" class="brand-logo hide-on-med-and-down">The Math Quiz Game</a>
         <ul id="nav-mobile" class="right ">
           <?php if(isset($_SESSION['UserLogin'])){?>
+            <li><a href="#">Profile</a></li>
             <li><a href="logout.php">Logout</a></li>
           <?php } else { ?>
             <li><a class="modal-trigger" href="#login">LOGIN</a></li>
@@ -37,7 +38,6 @@
       <?php include_once("login.php") ?>
     </div>
   </div>
-
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"
     integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
     crossorigin="anonymous">

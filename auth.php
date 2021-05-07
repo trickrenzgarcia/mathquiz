@@ -9,11 +9,15 @@
   $errors = array();
 
   // USER REGISTER
-  if(isset($_POST['signup'])){ 
+  if(isset($_POST['signup'])){
+    $first_name = mysqli_real_escape_string($con, $_POST['first_name']);
+    $last_name = mysqli_real_escape_string($con, $_POST['last_name']);
     $email = mysqli_real_escape_string($con, $_POST['email']);
     $password_1 = mysqli_real_escape_string($con, $_POST['password_1']);
     $password_2 = mysqli_real_escape_string($con, $_POST['password_2']);
 
+    if(empty($first_name)){ array_push($errors, "First Name is required"); }
+    if(empty($last_name)){ array_push($errors, "Last Name is required"); }
     if(empty($email)) { array_push($errors, "Email is required");}
     if (empty($password_1)) { array_push($errors, "Password is required"); }
     if ($password_1 != $password_2) {
@@ -30,7 +34,7 @@
     }
     if(count($errors) == 0){
       $password = md5($password_1);
-      $sql = "INSERT INTO users (email, password) VALUES('$email','$password')";
+      $sql = "INSERT INTO users (first_name, last_name, email, password) VALUES('$first_name', '$last_name', '$email','$password')";
       $user = $con->query($sql) or die ($con->error);
       $_SESSION['UserLogin'] = $email;
   	  $_SESSION['Access'] = "";
