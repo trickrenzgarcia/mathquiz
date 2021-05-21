@@ -55,7 +55,7 @@
                   <input type="password" name="password_2" id="password_2" class="validate" required/>
                 </div>
               </div>
-              <button class="button_submit" type="submit" name="signup">Sign up</button>
+              <button onclick="M.toast({html: "You've successfully created an account, you can login now!"})" class="button_submit" type="submit" name="signup">Sign up</button>
             </form>
           </div>
         </div>

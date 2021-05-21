@@ -15,38 +15,29 @@
   <title>Math Quiz Game</title>
 </head>
 <body>
-  <nav class="blue lighten-1">
-    <div class="nav-wrapper">
-      <div class="nav-container">
-        <img src="static/images/logo.png" alt="logo" width="100px">
-        <a href="index.php" class="brand-logo hide-on-med-and-down">The Math Quiz Game</a>
-        <ul id="nav-mobile" class="right ">
-          <?php if(isset($_SESSION['UserLogin'])){?>
-            <li><a href="#">Profile</a></li>
-            <li><a href="logout.php">Logout</a></li>
-          <?php } else { ?>
-            <li><a class="modal-trigger" href="#login">LOGIN</a></li>
-            <li><a href="signup.php">SIGN UP</a></li>
-          <?php }?>
-        </ul>
+  <main>
+    <!-- Header -->
+    <?php include_once('includes/header.php')?>
+
+    <!-- Modal Structure for login -->
+    <div id="login" class="modal">
+      <div class="modal-content">
+        <?php include_once("login.php") ?>
       </div>
     </div>
-  </nav>
-  <!-- Modal Structure -->
-  <div id="login" class="modal">
-    <div class="modal-content">
-      <?php include_once("login.php") ?>
-    </div>
-  </div>
-  
-  <div class="container">
-  
-  </div>
 
+    <!-- Quiz Content -->
+    <?php if(isset($_SESSION['UserLogin'])){?>
+      <?php include_once('includes/category.php')?>
+    <?php } else { ?>
+      <?php include_once('includes/welcome.php')?>
+    <?php }?>
 
+    <!-- Footer -->
+    <?php include_once('includes/footer.php')?>
+    
+  </main>
 
-
-  
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"
     integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
     crossorigin="anonymous">

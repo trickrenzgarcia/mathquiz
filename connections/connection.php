@@ -3,7 +3,7 @@
   function connection(){
     $host = "localhost";
     $username = "root";
-    $password = "root";
+    $password = "";
     $database = "mathquiz";
 
     $con = new mysqli($host, $username, $password, $database);

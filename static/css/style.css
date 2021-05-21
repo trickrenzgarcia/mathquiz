@@ -23,3 +23,6 @@ body {
 .title {
   
 }
+.title_style{
+  text-shadow: 1px 1px black;
+}

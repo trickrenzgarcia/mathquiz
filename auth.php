@@ -37,7 +37,7 @@
       $sql = "INSERT INTO users (first_name, last_name, email, password) VALUES('$first_name', '$last_name', '$email','$password')";
       $user = $con->query($sql) or die ($con->error);
       $_SESSION['UserLogin'] = $email;
-  	  $_SESSION['Access'] = "";
+  	  $_SESSION['Access'] = $first_name;
       header('location: index.php');
     }
     
@@ -67,7 +67,7 @@
 
         echo header("Location: index.php");
       } else {
-        echo "Wrong email/password combination";
+        echo '<script>alert("Wrong email or password combination!")</script>';
       }
     }
 

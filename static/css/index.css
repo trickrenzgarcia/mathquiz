@@ -1,6 +1,12 @@
-html, body{
+body{
   margin: 0;
   background: #90caf9;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+main {
+  flex: 1 0 auto;
 }
 .nav-container{
   padding: 20px;
@@ -10,6 +16,15 @@ nav{
 }
 .modal {
   width: 420px;
+}
+.container_content{
+  display: flex;
+  justify-content: center;
+}
+.content_block {
+  width: 800px;
+  margin-top: 50px;
+  margin-bottom: 35px;
 }
 .button_submit {
   margin-top: 30px;
@@ -25,4 +40,7 @@ nav{
 }
 .button_submit:hover{
   background: lightgray;
+}
+.footer-copyright {
+  border-top: 1px solid gray;
 }
