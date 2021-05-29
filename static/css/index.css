@@ -1,7 +1,8 @@
 body{
   margin: 0;
-  background: #90caf9;
+  background: #fafafa;
   display: flex;
+  color: black;
   min-height: 100vh;
   flex-direction: column;
 }
@@ -22,8 +23,8 @@ nav{
   justify-content: center;
 }
 .content_block {
-  width: 800px;
-  margin-top: 50px;
+  width: 720px;
+  margin-top: 100px;
   margin-bottom: 35px;
 }
 .button_submit {
@@ -43,4 +44,47 @@ nav{
 }
 .footer-copyright {
   border-top: 1px solid gray;
+}
+
+.category_style {
+  transition: transform .2s; /* Animation */
+  margin: 0 auto;
+}
+.category_style:hover {
+  -ms-transform: scale(1.125); /* IE 9 */
+  -webkit-transform: scale(1.125); /* Safari 3-8 */
+  transform: scale(1.125);
+  border: 2px solid gray;
+}
+
+.addition_layout {
+  background-image: url("../images/ui/add-bg.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  text-align: center;
+}
+
+.subtraction_layout {
+  background-image: url("../images/ui/subtract-bg.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  text-align: center;
+}
+
+.multiplication_layout {
+  background-image: url("../images/ui/multiply-bg.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  text-align: center;
+}
+
+.division_layout {
+  background-image: url("../images/ui/divide-bg.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  text-align: center;
 }

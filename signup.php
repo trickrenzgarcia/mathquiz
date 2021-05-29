@@ -24,9 +24,11 @@
         <a class="back_button" href="index.php"><i class="medium material-icons" style="float:right">arrow_back</i></a>
       </div>
       <div class="col s12">
+        <center><h3>SIGN UP</h3></center>
           <div class="row">
+            
             <form class="col s12" action="" method="post">
-              <center><h3>SIGN UP</h3></center>
+              
               <div class="row">
                 <div class="input-field col s6 l6 m6">
                   <label for="first_name">First Name</label><br>
@@ -35,6 +37,13 @@
                 <div class="input-field col s6 l6 m6">
                   <label for="last_name">Last Name</label><br>
                   <input type="text" name="last_name" id="last_name" class="validate" required/>
+                </div>
+                
+              </div>
+              <div class="row">
+                <div class="input-field col s12 l12 m12">
+                  <label for="age">Age</label><br>
+                  <input type="text" name="age" id="age" class="validate" required/>
                 </div>
               </div>
               <div class="row">

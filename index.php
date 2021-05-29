@@ -11,28 +11,38 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="static/css/materialize.min.css">
   <link rel="stylesheet" type="text/css" href="static/css/index.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="icon" href="static/images/logo.jpg">
   <title>Math Quiz Game</title>
 </head>
 <body>
   <main>
+  
     <!-- Header -->
     <?php include_once('includes/header.php')?>
 
+    <!-- Profile -->
+    <?php include_once('includes/profile.php')?>
+    
     <!-- Modal Structure for login -->
     <div id="login" class="modal">
       <div class="modal-content">
         <?php include_once("login.php") ?>
       </div>
     </div>
-
+    
     <!-- Quiz Content -->
-    <?php if(isset($_SESSION['UserLogin'])){?>
+    <?php if(isset($_SESSION['UserLogin'])){
+      if(isset($_SESSION['access' == 1])){
+        //you logged in as an Admin
+      }?>
+      
       <?php include_once('includes/category.php')?>
     <?php } else { ?>
       <?php include_once('includes/welcome.php')?>
     <?php }?>
-
+    
+    
     <!-- Footer -->
     <?php include_once('includes/footer.php')?>
     
